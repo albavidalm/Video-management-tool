@@ -1,0 +1,575 @@
+<html><head><meta charset="utf-8"/><title>Test Solution</title><style type="text/css">html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+body {
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+}
+#jesthtml-content {
+  margin: 0 auto;
+  max-width: 70rem;
+}
+header {
+  display: flex;
+  align-items: center;
+}
+#title {
+  margin: 0;
+  flex-grow: 1;
+}
+#logo {
+  height: 4rem;
+}
+#timestamp {
+  color: #777;
+  margin-top: 0.5rem;
+}
+
+/** SUMMARY */
+#summary {
+  color: #333;
+  margin: 2rem 0;
+  display: flex;
+  font-family: monospace;
+  font-size: 1rem;
+}
+#summary > div {
+  margin-right: 2rem;
+  background: #eee;
+  padding: 1rem;
+  min-width: 15rem;
+}
+#summary > div:last-child {
+  margin-right: 0;
+}
+@media only screen and (max-width: 720px) {
+  #summary {
+    flex-direction: column;
+  }
+  #summary > div {
+    margin-right: 0;
+    margin-top: 2rem;
+  }
+  #summary > div:first-child {
+    margin-top: 0;
+  }
+}
+
+.summary-total {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.summary-passed {
+  color: #4f8a10;
+  border-left: 0.4rem solid #4f8a10;
+  padding-left: 0.5rem;
+}
+.summary-failed,
+.summary-obsolete-snapshots {
+  color: #d8000c;
+  border-left: 0.4rem solid #d8000c;
+  padding-left: 0.5rem;
+}
+.summary-pending {
+  color: #9f6000;
+  border-left: 0.4rem solid #9f6000;
+  padding-left: 0.5rem;
+}
+.summary-empty {
+  color: #999;
+  border-left: 0.4rem solid #999;
+}
+
+.test-result {
+  padding: 1rem;
+  margin-bottom: 0.25rem;
+}
+.test-result:last-child {
+  border: 0;
+}
+.test-result.passed {
+  background-color: #dff2bf;
+  color: #4f8a10;
+}
+.test-result.failed {
+  background-color: #ffbaba;
+  color: #d8000c;
+}
+.test-result.pending {
+  background-color: #ffdf61;
+  color: #9f6000;
+}
+
+.test-info {
+  display: flex;
+  justify-content: space-between;
+}
+.test-suitename {
+  width: 20%;
+  text-align: left;
+  font-weight: bold;
+  word-break: break-word;
+}
+.test-title {
+  width: 40%;
+  text-align: left;
+  font-style: italic;
+}
+.test-status {
+  width: 20%;
+  text-align: right;
+}
+.test-duration {
+  width: 10%;
+  text-align: right;
+  font-size: 0.75rem;
+}
+
+.failureMessages {
+  padding: 0 1rem;
+  margin-top: 1rem;
+  border-top: 1px dashed #d8000c;
+}
+.failureMessages.suiteFailure {
+  border-top: none;
+}
+.failureMsg {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+.suite-container {
+  margin-bottom: 2rem;
+}
+.suite-info {
+  padding: 1rem;
+  background-color: #eee;
+  color: #777;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+.suite-info .suite-path {
+  word-break: break-all;
+  flex-grow: 1;
+  font-family: monospace;
+  font-size: 1rem;
+}
+.suite-info .suite-time {
+  margin-left: 0.5rem;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.75rem;
+}
+.suite-info .suite-time.warn {
+  background-color: #d8000c;
+  color: #fff;
+}
+
+/* CONSOLE LOGS */
+.suite-consolelog {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: #efefef;
+}
+.suite-consolelog-header {
+  font-weight: bold;
+}
+.suite-consolelog-item {
+  padding: 0.5rem;
+}
+.suite-consolelog-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-consolelog-item-origin {
+  color: #777;
+  font-weight: bold;
+}
+.suite-consolelog-item-message {
+  color: #000;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+
+/* OBSOLETE SNAPSHOTS */
+.suite-obsolete-snapshots {
+  margin-bottom: 0.25rem;
+  padding: 1rem;
+  background-color: #ffbaba;
+  color: #d8000c;
+}
+.suite-obsolete-snapshots-header {
+  font-weight: bold;
+}
+.suite-obsolete-snapshots-item {
+  padding: 0.5rem;
+}
+.suite-obsolete-snapshots-item pre {
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.suite-obsolete-snapshots-item-message {
+  color: #000;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+}
+</style></head><body><div id="jesthtml-content"><header><h1 id="title">Test Solution</h1></header><div id="metadata-container"><div id="timestamp">Started: 2022-05-03 19:08:37</div><div id="summary"><div id="suite-summary"><div class="summary-total">Suites (1)</div><div class="summary-passed">1 passed</div><div class="summary-failed summary-empty">0 failed</div><div class="summary-pending summary-empty">0 pending</div></div><div id="test-summary"><div class="summary-total">Tests (41)</div><div class="summary-passed">41 passed</div><div class="summary-failed summary-empty">0 failed</div><div class="summary-pending summary-empty">0 pending</div></div></div></div><div id="suite-1" class="suite-container"><div class="suite-info"><div class="suite-path">/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/tests/films.spec.js</div><div class="suite-time">0.171s</div></div><div class="suite-tests"><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "getAllDirectors"</div><div class="test-title">should be declared</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "getAllDirectors"</div><div class="test-title">should return an array</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "getAllDirectors"</div><div class="test-title">should return a new array, not update the original one</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "getAllDirectors"</div><div class="test-title">should return a new array with the same length as the original one</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "getMoviesFromDirector"</div><div class="test-title">should be declared</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "getMoviesFromDirector"</div><div class="test-title">should return an array</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "getMoviesFromDirector"</div><div class="test-title">should return a new array, not update the original one</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "getMoviesFromDirector"</div><div class="test-title">should return a new array with the movies from director</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "moviesAverageOfDirector"</div><div class="test-title">should be declared</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "moviesAverageOfDirector"</div><div class="test-title">should return a number</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "moviesAverageOfDirector"</div><div class="test-title"> should return the average score of movies selecting only the director films. With 2 decimals! </div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderAlphabetically"</div><div class="test-title">should be declared</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderAlphabetically"</div><div class="test-title">should return an array</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderAlphabetically"</div><div class="test-title">should not mutate the original array</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderAlphabetically"</div><div class="test-title">should only return the title of the movies, each value should be a string</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderAlphabetically"</div><div class="test-title">should return all of items when the array passed has fewer than 20 items</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderAlphabetically"</div><div class="test-title">should order them alphabetically.</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderAlphabetically"</div><div class="test-title">should return the top 20 after ordering them alphabetically.</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderByYear"</div><div class="test-title">should be declared</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderByYear"</div><div class="test-title">should return an array</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderByYear"</div><div class="test-title">should return a new array</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderByYear"</div><div class="test-title">should return the element in a single element array</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderByYear"</div><div class="test-title">should return the new array in ascending order</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "orderByYear"</div><div class="test-title">should order movies with the same year by their title, alphabetically</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "moviesAverageByCategory"</div><div class="test-title">should be declared</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "moviesAverageByCategory"</div><div class="test-title">should return a number</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "moviesAverageByCategory"</div><div class="test-title"> should return the average score of 2 movies with score 7 each</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "moviesAverageByCategory"</div><div class="test-title">should be rounded to 2 decimals places</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "moviesAverageByCategory"</div><div class="test-title">should not take into consideration films of other category</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "moviesAverageByCategory"</div><div class="test-title">should return average even if one of the movies does not have score</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "hoursToMinutes"</div><div class="test-title">should be declared</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "hoursToMinutes"</div><div class="test-title">should return an array</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "hoursToMinutes"</div><div class="test-title">should return a new array, not update the original one</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "hoursToMinutes"</div><div class="test-title">should return an array of movies with duration as a number</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "hoursToMinutes"</div><div class="test-title">should return an array of movies with the correct duration for a 31 minute movie</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "hoursToMinutes"</div><div class="test-title">should return an array of movies with the correct duration for a 341 minute movie</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "hoursToMinutes"</div><div class="test-title">should return an array of movies with the correct duration for a 2 hour movie</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "bestFilmOfYear"</div><div class="test-title">should be declared</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "bestFilmOfYear"</div><div class="test-title">should return an array</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "bestFilmOfYear"</div><div class="test-title">should return a new array, not update the original one</div><div class="test-status">passed</div><div class="test-duration">0.001s</div></div></div><div class="test-result passed"><div class="test-info"><div class="test-suitename">Function "bestFilmOfYear"</div><div class="test-title">should return the best film of a year, searching in an array</div><div class="test-status">passed</div><div class="test-duration">0s</div></div></div></div><div class="suite-consolelog"><div class="suite-consolelog-header">Console Log</div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at getAllDirectors (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:4:11)
+    at Object.&lt;anonymous&gt; (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/tests/films.spec.js:20:12)
+    at Promise.then.completed (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:218:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at _runTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:155:3)</pre><pre class="suite-consolelog-item-message">EXERCICE 1 -&gt; [
+  'Frank Darabont',
+  'Francis Ford Coppola',
+  'Francis Ford Coppola',
+  'Christopher Nolan',
+  'Sidney Lumet',
+  'Steven Spielberg',
+  'Quentin Tarantino',
+  'Peter Jackson',
+  'Sergio Leone',
+  'David Fincher',
+  'Peter Jackson',
+  'Robert Zemeckis',
+  'Irvin Kershner',
+  'Christopher Nolan',
+  'Peter Jackson',
+  'Milos Forman',
+  'Martin Scorsese',
+  'Lana Wachowski',
+  'Akira Kurosawa',
+  'George Lucas',
+  'Fernando Meirelles',
+  'David Fincher',
+  'Jonathan Demme',
+  'Frank Capra',
+  'Roberto Benigni',
+  'Bryan Singer',
+  'Luc Besson',
+  'Steven Spielberg',
+  'Hayao Miyazaki',
+  'Tony Kaye',
+  'Sergio Leone',
+  'Christopher Nolan',
+  'Alfred Hitchcock',
+  'Frank Darabont',
+  'Michael Curtiz',
+  'Charles Chaplin',
+  'Olivier Nakache',
+  'Charles Chaplin',
+  'Steven Spielberg',
+  'Roman Polanski',
+  'Martin Scorsese',
+  'Alfred Hitchcock',
+  'James Cameron',
+  'Robert Zemeckis',
+  'Damien Chazelle',
+  'Ridley Scott',
+  'Christopher Nolan',
+  'Roger Allers',
+  'Christopher Nolan',
+  'Francis Ford Coppola',
+  'Ridley Scott',
+  'Charles Chaplin',
+  'Billy Wilder',
+  'Stanley Kubrick',
+  'Giuseppe Tornatore',
+  'Florian Henckel von Donnersmarck',
+  'Isao Takahata',
+  'Denis Villeneuve',
+  'Stanley Kubrick',
+  'Quentin Tarantino',
+  'Stanley Kubrick',
+  'Andrew Stanton',
+  'Sam Mendes',
+  'Christopher Nolan',
+  'Hayao Miyazaki',
+  'Chan-wook Park',
+  'James Cameron',
+  'Billy Wilder',
+  'Sergio Leone',
+  'Wolfgang Petersen',
+  'Orson Welles',
+  'Nitesh Tiwari',
+  'Alfred Hitchcock',
+  'Alfred Hitchcock',
+  'Richard Marquand',
+  'Mel Gibson',
+  'Quentin Tarantino',
+  'Fritz Lang',
+  'Darren Aronofsky',
+  'Jean-Pierre Jeunet',
+  'Aamir Khan',
+  'Stanley Kubrick',
+  'Makoto Shinkai',
+  'David Lean',
+  'Billy Wilder',
+  'Milos Forman',
+  'Michel Gondry',
+  'Martin Scorsese',
+  'Robert Mulligan',
+  'Christopher Nolan',
+  'Stanley Kubrick',
+  'Stanley Kubrick',
+  'Stanley Donen',
+  'Lee Unkrich',
+  'John Lasseter',
+  'George Roy Hill',
+  'Rajkumar Hirani',
+  'Vittorio De Sica',
+  'Quentin Tarantino',
+  'Charles Chaplin',
+  ... 150 more items
+]</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at getAllDirectors (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:4:11)
+    at Object.&lt;anonymous&gt; (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/tests/films.spec.js:24:12)
+    at Promise.then.completed (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:218:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at _runTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:155:3)</pre><pre class="suite-consolelog-item-message">EXERCICE 1 -&gt; [
+  'Frank Darabont',
+  'Francis Ford Coppola',
+  'Francis Ford Coppola',
+  'Christopher Nolan',
+  'Sidney Lumet',
+  'Steven Spielberg',
+  'Quentin Tarantino',
+  'Peter Jackson',
+  'Sergio Leone',
+  'David Fincher',
+  'Peter Jackson',
+  'Robert Zemeckis',
+  'Irvin Kershner',
+  'Christopher Nolan',
+  'Peter Jackson',
+  'Milos Forman',
+  'Martin Scorsese',
+  'Lana Wachowski',
+  'Akira Kurosawa',
+  'George Lucas',
+  'Fernando Meirelles',
+  'David Fincher',
+  'Jonathan Demme',
+  'Frank Capra',
+  'Roberto Benigni',
+  'Bryan Singer',
+  'Luc Besson',
+  'Steven Spielberg',
+  'Hayao Miyazaki',
+  'Tony Kaye',
+  'Sergio Leone',
+  'Christopher Nolan',
+  'Alfred Hitchcock',
+  'Frank Darabont',
+  'Michael Curtiz',
+  'Charles Chaplin',
+  'Olivier Nakache',
+  'Charles Chaplin',
+  'Steven Spielberg',
+  'Roman Polanski',
+  'Martin Scorsese',
+  'Alfred Hitchcock',
+  'James Cameron',
+  'Robert Zemeckis',
+  'Damien Chazelle',
+  'Ridley Scott',
+  'Christopher Nolan',
+  'Roger Allers',
+  'Christopher Nolan',
+  'Francis Ford Coppola',
+  'Ridley Scott',
+  'Charles Chaplin',
+  'Billy Wilder',
+  'Stanley Kubrick',
+  'Giuseppe Tornatore',
+  'Florian Henckel von Donnersmarck',
+  'Isao Takahata',
+  'Denis Villeneuve',
+  'Stanley Kubrick',
+  'Quentin Tarantino',
+  'Stanley Kubrick',
+  'Andrew Stanton',
+  'Sam Mendes',
+  'Christopher Nolan',
+  'Hayao Miyazaki',
+  'Chan-wook Park',
+  'James Cameron',
+  'Billy Wilder',
+  'Sergio Leone',
+  'Wolfgang Petersen',
+  'Orson Welles',
+  'Nitesh Tiwari',
+  'Alfred Hitchcock',
+  'Alfred Hitchcock',
+  'Richard Marquand',
+  'Mel Gibson',
+  'Quentin Tarantino',
+  'Fritz Lang',
+  'Darren Aronofsky',
+  'Jean-Pierre Jeunet',
+  'Aamir Khan',
+  'Stanley Kubrick',
+  'Makoto Shinkai',
+  'David Lean',
+  'Billy Wilder',
+  'Milos Forman',
+  'Michel Gondry',
+  'Martin Scorsese',
+  'Robert Mulligan',
+  'Christopher Nolan',
+  'Stanley Kubrick',
+  'Stanley Kubrick',
+  'Stanley Donen',
+  'Lee Unkrich',
+  'John Lasseter',
+  'George Roy Hill',
+  'Rajkumar Hirani',
+  'Vittorio De Sica',
+  'Quentin Tarantino',
+  'Charles Chaplin',
+  ... 150 more items
+]</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at getAllDirectors (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:4:11)
+    at Object.&lt;anonymous&gt; (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/tests/films.spec.js:46:12)
+    at Promise.then.completed (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:218:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at _runTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:155:3)</pre><pre class="suite-consolelog-item-message">EXERCICE 1 -&gt; [ 'Stanley Kubrick', 'Quentin Tarantino' ]</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at getMoviesFromDirector (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:11:11)
+    at Object.&lt;anonymous&gt; (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/tests/films.spec.js:60:12)
+    at Promise.then.completed (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:218:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at _runTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:155:3)</pre><pre class="suite-consolelog-item-message">EXERCICE 2 -&gt; []</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at getMoviesFromDirector (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:11:11)
+    at Object.&lt;anonymous&gt; (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/tests/films.spec.js:64:12)
+    at Promise.then.completed (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:218:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at _runTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:155:3)</pre><pre class="suite-consolelog-item-message">EXERCICE 2 -&gt; []</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at getMoviesFromDirector (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:11:11)
+    at Object.&lt;anonymous&gt; (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/tests/films.spec.js:86:12)
+    at Promise.then.completed (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:218:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at _runTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:155:3)</pre><pre class="suite-consolelog-item-message">EXERCICE 2 -&gt; [
+  {
+    title: 'Django Unchained',
+    year: 2012,
+    director: 'Quentin Tarantino',
+    duration: '2h 45min',
+    genre: [ 'Drama', 'Western' ],
+    score: 8.4
+  }
+]</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at getMoviesFromDirector (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:11:11)
+    at moviesAverageOfDirector (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:23:16)
+    at Object.&lt;anonymous&gt; (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/tests/films.spec.js:107:19)
+    at Promise.then.completed (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:218:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</pre><pre class="suite-consolelog-item-message">EXERCICE 2 -&gt; [
+  {
+    title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
+    year: 1964,
+    director: 'Stanley Kubrick',
+    duration: '1h 35min',
+    genre: [ 'Comedy' ],
+    score: 8.5
+  },
+  {
+    title: 'Paths of Glory',
+    year: 1957,
+    director: 'Stanley Kubrick',
+    duration: '1h 28min',
+    genre: [ 'Drama', 'War' ],
+    score: 8.4
+  },
+  {
+    title: 'The Shining',
+    year: 1980,
+    director: 'Stanley Kubrick',
+    duration: '2h 26min',
+    genre: [ 'Drama', 'Horror' ],
+    score: 8.4
+  },
+  {
+    title: 'A Clockwork Orange',
+    year: 1971,
+    director: 'Stanley Kubrick',
+    duration: '2h 16min',
+    genre: [ 'Crime', 'Drama', 'Sci-Fi' ],
+    score: 8.3
+  },
+  {
+    title: 'Full Metal Jacket',
+    year: 1987,
+    director: 'Stanley Kubrick',
+    duration: '1h 56min',
+    genre: [ 'Drama', 'War' ],
+    score: 8.3
+  },
+  {
+    title: '2001: A Space Odyssey',
+    year: 1968,
+    director: 'Stanley Kubrick',
+    duration: '2h 29min',
+    genre: [ 'Adventure', 'Sci-Fi' ],
+    score: 8.3
+  },
+  {
+    title: 'Barry Lyndon',
+    year: 1975,
+    director: 'Stanley Kubrick',
+    duration: '3h 4min',
+    genre: [ 'Adventure', 'Drama', 'History', 'War' ],
+    score: 8.1
+  }
+]</pre></div><div class="suite-consolelog-item"><pre class="suite-consolelog-item-origin">    at getMoviesFromDirector (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:11:11)
+    at moviesAverageOfDirector (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/src/films.js:23:16)
+    at Object.&lt;anonymous&gt; (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/tests/films.spec.js:111:12)
+    at Promise.then.completed (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/AlbA/Code/GitHub/starter-code-frontend-sprint-4-main/node_modules/jest-circus/build/run.js:218:40)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</pre><pre class="suite-consolelog-item-message">EXERCICE 2 -&gt; [
+  {
+    title: 'Django Unchained',
+    year: 2012,
+    director: 'Quentin Tarantino',
+    duration: '2h 45min',
+    genre: [ 'Drama', 'Western' ],
+    score: 8.4
+  },
+  {
+    title: 'Pulp Fiction',
+    year: 1994,
+    director: 'Quentin Tarantino',
+    duration: '2h 34min',
+    genre: [ 'Crime', 'Drama' ],
+    score: 8.9
+  }
+]</pre></div></div></div></div></body></html>
