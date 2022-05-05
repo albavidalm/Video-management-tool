@@ -6,7 +6,7 @@ A company in the audiovisual sector has asked us for a web application that will
 
 You will be in charge of setting up the core of the application: all the logic of filtering and sorting of movies.
 
-To finish this job correctly you have to pass all the gived tests.
+To finish this job correctly you have to fulfill all the gived tests.
 <br>
 
 ---
